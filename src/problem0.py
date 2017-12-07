@@ -8,7 +8,7 @@ These problems illustrate concepts that previous problems have not emphasized:
   -- animation (Problem 0c)
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
+         their colleagues and Zheming Zhang.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -164,6 +164,14 @@ def problem0a(n):
     #        ASK FOR HELP if you do not understand this hint.
     # ------------------------------------------------------------------
 
+    if sum_of_digits(n) % 2 == 0:
+        return False
+    else:
+        return True
+
+
+
+
 
 def run_test_problem0b():
     """ Tests the   problem0b   function. """
@@ -228,6 +236,12 @@ def problem0b(n):
     ####################################################################
     # ------------------------------------------------------------------
 
+
+    count = 0
+    for k in range(2, n + 1):
+        if is_prime(k) is True:
+            count += 1
+    return count
 
 def run_test_problem0c():
     """ Tests the   problem0c  function. """
@@ -294,6 +308,16 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ####################################################################
     # ------------------------------------------------------------------
+
+
+    circle.attach_to(window)
+    x = circle.center.x
+    y = circle.center.y
+    for k in range(1,n+1):
+        value = x + 2 * k * circle.radius
+        circle = rg.Circle(rg.Point(value, y), circle.radius)
+        circle.attach_to(window)
+        window.render(0.5)
 
 
 # ----------------------------------------------------------------------
